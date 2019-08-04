@@ -1,1 +1,27 @@
-<router-outlet></router-outlet>
+<nb-layout>
+  <nb-layout-header>
+    <!-- <mat-toolbar>
+      <mat-toolbar-row>
+        <span class="logo" routerLink=""><img src="assets/images/logo/logo.png" /></span>
+        <span class="spacer"></span>
+        <a mat-button routerLink="/register">Register</a>
+        <a mat-button routerLink="/login">Login</a>
+      </mat-toolbar-row>
+    </mat-toolbar> -->
+    <span class="logo" routerLink=""><img src="assets/images/logo/logo.png" /></span>
+    <span class="spacer"></span>
+    <a nbButton ghost routerLink="/register">Register</a>
+    <a nbButton ghost routerLink="/login">Login</a>
+
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+
+  <nb-layout-footer>
+    <span class="footer author"> Made with <i class="love"></i>
+      by <a href="https://github.com/KtanPatel" target="_blank">Ketan Patel.</a>
+    </span>
+  </nb-layout-footer>
+</nb-layout>
