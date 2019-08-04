@@ -1,8 +1,41 @@
+@import 'themes';
+
+@import '~@nebular/theme/styles/globals';
+
+@include nb-install() {
+  @include nb-theme-global();
+};
+
 /* You can add global styles to this file, and also import other style files */
+// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+// @import './assets/scss/theming';
 
 body {
-  padding: 50px;
+  // padding: 50px;
+  height: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF; }
+  color: #00B7FF; 
+}
+
+// login page
+
+// .login-card{
+//     margin: 10px 0;
+//     min-width: 220px;
+// }
+
+.layout{
+    .layout-container{
+        margin-top: 0 !important;
+    }
+}
+
+.full-width {
+    width: 100%;
+    &.option-btn{
+      margin: 2px 0 !important;
+    }
+}
+

@@ -1,0 +1,9 @@
+<nb-chat title="#general" size="large">
+    <nb-chat-message *ngFor="let message of messages" [type]="message.type" [message]="message.text"
+        [reply]="message.reply" [sender]="message.user.name" [date]="message.date" [files]="message.files"
+        [quote]="message.quote" [latitude]="message.latitude" [longitude]="message.longitude"
+        [avatar]="message.user.avatar"></nb-chat-message>
+    <nb-chat-form (send)="sendMessage($event, username, 'assets/images/logo/logo.png', true)" [showButton]="true"
+        [dropFiles]="true">
+    </nb-chat-form>
+</nb-chat>

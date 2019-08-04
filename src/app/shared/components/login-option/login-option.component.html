@@ -1,0 +1,15 @@
+<nb-card class="login-card">
+    <nb-card-header class="login-header">
+        <img id="profile-img" class="rounded-circle profile-img-card" src="assets/images/logo/logo.png" />
+    </nb-card-header>
+    <nb-card-body>
+        <div class="text-center">
+            <label>Choose Option</label>
+        </div>
+    </nb-card-body>
+    <nb-card-footer>
+        <div class="option-btn">
+            <button nbButton fullWidth (click)="clickHandler('public')" status="primary">Public</button>
+            <button nbButton fullWidth (click)="clickHandler('private')" status="primary">Private</button></div>
+    </nb-card-footer>
+</nb-card>

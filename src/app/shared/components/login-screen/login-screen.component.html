@@ -1,0 +1,12 @@
+<nb-card class="login-card">
+    <nb-card-header class="login-header">
+        <img id="profile-img" class="rounded-circle profile-img-card" src="assets/images/logo/logo.png" />
+    </nb-card-header>
+    <nb-card-body>
+        <input type="text" nbInput fullWidth shape="semi-round" placeholder="Username" [(ngModel)]="model.username"
+            name="username" required>
+    </nb-card-body>
+    <nb-card-footer>
+        <button nbButton fullWidth (click)="loginClickHandler()" status="primary">Login</button>
+    </nb-card-footer>
+</nb-card>
