@@ -6,7 +6,7 @@
     "ng": "ng",
     "ng-serve": "ng serve",
     "start": "nodemon ./bin/www",
-    "build": "ng build",
+    "build": "ng build --prod",
     "dev": "run-p start ng-serve",
     "postinstall": "ng build --prod",
     "test": "ng test",
