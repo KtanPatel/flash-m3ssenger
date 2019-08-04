@@ -32,9 +32,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/assets/js/jquery-3.2.1.slim.min.js",
-              "src/assets/js/popper.min.js",
-              "src/assets/js/bootstrap.min.js"
+              "src/assets/js/jquery-3.2.1.slim.min.js"
             ]
           },
           "configurations": {

@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: LoginComponent
+  },
+  {
+    path: 'chat',
+    loadChildren: './chat/chat.module#ChatModule'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

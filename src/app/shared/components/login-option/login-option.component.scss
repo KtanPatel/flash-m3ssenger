@@ -1,0 +1,16 @@
+.login-card{
+    min-width: 320px;
+    width: 320px;
+    .login-header{
+        text-align: center;
+    }
+    .option-btn{
+        button{
+            margin: 5px 0;
+        }
+    }
+}
+#profile-img {
+    height:180px;
+    box-shadow: 10px 10px 15px #454e62;
+}

@@ -1,16 +1,13 @@
-<div class="container h-80">
-    <div class="row align-items-center h-100">
-        <div class="col-3 mx-auto">
-            <div class="text-center">
-                <img id="profile-img" class="rounded-circle profile-img-card" src="assets/images/logo/logo.png" />
-                <p id="profile-name" class="profile-name-card"></p>
-                <form class="form-signin">
-                    <input type="text" name="username" id="inputPassword" class="form-control form-group"
-                        placeholder="Username" required autofocus>
-                    <button class="btn btn-lg btn-enter btn-block btn-signin" type="button" (click)="enterClickHandler()">enter</button>
-                </form><!-- /form -->
-            </div>
-        </div>
-    </div>
-</div>
+<nb-card class="align-items-center" *ngIf="model.step==='login'">
+    <nb-card-body>
+        <app-login-screen (Click)="enterClickHandler($event)">
+        </app-login-screen>
+    </nb-card-body>
+</nb-card>
 
+<nb-card class="align-items-center" *ngIf="model.step==='options'">
+    <nb-card-body>
+        <app-login-option (Click)="optionClickHandler($event)">
+        </app-login-option>
+    </nb-card-body>
+</nb-card>
