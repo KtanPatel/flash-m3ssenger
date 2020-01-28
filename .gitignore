@@ -45,6 +45,12 @@ testem.log
 # package lock file
 *-lock.json
 
+# env file
+.env
+
+#logs
+*.log*
+
 # System Files
 .DS_Store
 Thumbs.db
