@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   optionClickHandler = (e) => {
     sessionStorage.setItem('option', e);
     this.router.navigate(['chat'], { skipLocationChange: true });
-    this.chatService.joinGroup(sessionStorage.getItem('username'));
+    this.chatService.joinGroup({ username: sessionStorage.getItem('username') });
   }
 
   ngOnDestroy(): void {

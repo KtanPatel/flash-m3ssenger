@@ -27,7 +27,6 @@ export class ConversationComponent implements OnInit, OnDestroy {
       );
     });
     this.chatService.getMessage().subscribe((message: any) => {
-      message.reply = false;
       if (message.user.name !== this.username) {
         this.messages.push(message);
       }
@@ -71,7 +70,7 @@ export class ConversationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.chatService.disconnectUser(this.username);
+    this.chatService.disconnectUser();
   }
 
 }

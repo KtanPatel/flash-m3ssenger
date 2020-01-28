@@ -1,14 +1,14 @@
 <nb-layout>
-
     <nb-layout-header subheader>
         <nb-actions>
             <nb-action (click)="toggle()" icon="menu">
             </nb-action>
             <nb-action icon="search-outline"></nb-action>
         </nb-actions>
+        Online Users: {{menu.length}}
     </nb-layout-header>
     <nb-sidebar tag="left" state="collapsed">
-        <!-- <nb-menu [items]="menu"></nb-menu> -->
+        <nb-menu [items]="menu"></nb-menu>
     </nb-sidebar>
     <nb-layout-column>
 

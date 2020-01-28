@@ -5,23 +5,28 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ChatService {
 
   constructor(private socket: Socket) { }
 
   // Group Chat / Public
 
-  joinGroup(username: string) {
-    this.socket.emit('join', username);
+  joinGroup(params: formattedInput) {
+    this.socket.emit('join', params, (err) => {
+      if (err) {
+        console.log('\n >>>>> Join Group: ', 'err ===>', err);
+      }
+    });
   }
 
   sendMessage(msg: message) {
-    this.socket.emit('chat_message', msg);
+    this.socket.emit('newMessage', msg);
   }
 
   getMessage() {
     return new Observable((observer) => {
-      this.socket.on('chat_message', (msg: message) => {
+      this.socket.on('newMessage', (msg: message) => {
         observer.next(msg);
       });
     });
@@ -35,10 +40,30 @@ export class ChatService {
     });
   }
 
-  disconnectUser(username: string) {
-    this.socket.emit('disconnect', username);
+  disconnectUser(room: string = 'public') {
+    this.socket.emit('leave', { room });
   }
 
+  disconnectServer = () => {
+    this.socket.on('disconnect', () => {
+      console.log('Connection lost from server.');
+    });
+  }
+
+  getOnlineUsers() {
+    return new Observable((observer) => {
+      this.socket.on('updateUserList', (user: any) => {
+        console.log('\n >>>>> OnlineUsers: ', 'user ===>', user);
+        observer.next(user);
+      });
+    });
+  }
+
+}
+
+interface formattedInput {
+  username: string;
+  room?: string;
 }
 
 interface message {

@@ -26,7 +26,7 @@ const server = http.createServer(app);
  * Socket IO Config
  */
 
-const socket = require('./../controllers/socket');
+const socket = require('./../helpers/socket');
 socket.config(server);
 
 /**
@@ -94,5 +94,6 @@ function onListening() {
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
+  console.log('\n >>>>> Server: ', 'Listening on ===>', bind);
   debug('Listening on ' + bind);
 }
