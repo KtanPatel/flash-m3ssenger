@@ -1,33 +1,36 @@
-
-    .spacer {
+.spacer {
   flex: 1 1 auto;
 }
 
 .logo {
-    &:focus{
-        outline: none;
-    }
-    img{
-        height: 40px;
-        // box-shadow: 10px 10px 15px #828fac;
-        border-radius: 50%;
-        background: white;
-        cursor: pointer;
-    }
+  &:focus {
+    outline: none;
+  }
+  img {
+    height: 40px;
+    // box-shadow: 10px 10px 15px #828fac;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+  }
 }
 
-.love{
-    color: red;
-    &:after{
-        content: '♥';
-    }
+.love {
+  transition: all 0.5s;
+  color: #cc0000;
+  &:after {
+    content: "♥";
+  }
+  &.beat {
+    font-size: larger;
+    color: #ffffff;
+  }
 }
-.footer.author{
-    a{
-        text-decoration: none;
-    }
+.footer.author {
+  a {
+    text-decoration: none;
+  }
 }
-
 
 // :host {
 //     position: relative;

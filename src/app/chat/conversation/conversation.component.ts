@@ -13,6 +13,7 @@ export class ConversationComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.username = sessionStorage.getItem('username');
+    this.chatService.joinGroup({ username: this.username });
     this.chatService.onlineStatus().subscribe(user => {
       this.messages.push(
         {
@@ -27,6 +28,7 @@ export class ConversationComponent implements OnInit, OnDestroy {
       );
     });
     this.chatService.getMessage().subscribe((message: any) => {
+      message.reply = false;
       if (message.user.name !== this.username) {
         this.messages.push(message);
       }

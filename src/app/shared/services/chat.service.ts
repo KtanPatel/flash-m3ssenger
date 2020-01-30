@@ -12,6 +12,14 @@ export class ChatService {
 
   // Group Chat / Public
 
+  pong() {
+    return new Observable((observer) => {
+      this.socket.on('pong', (data) => {
+        observer.next(data);
+      });
+    });
+  }
+
   joinGroup(params: formattedInput) {
     this.socket.emit('join', params, (err) => {
       if (err) {

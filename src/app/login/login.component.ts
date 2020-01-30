@@ -11,14 +11,9 @@ import { ChatService } from '../shared/services/chat.service';
 export class LoginComponent implements OnInit, OnDestroy {
 
   model: any = { step: 'login' };
-  constructor(private router: Router, private chatService: ChatService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    const username = sessionStorage.getItem('username');
-    if (username) {
-      this.chatService.disconnectUser(username);
-      sessionStorage.clear();
-    }
   }
 
   enterClickHandler = (e) => {
@@ -29,7 +24,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   optionClickHandler = (e) => {
     sessionStorage.setItem('option', e);
     this.router.navigate(['chat'], { skipLocationChange: true });
-    this.chatService.joinGroup({ username: sessionStorage.getItem('username') });
   }
 
   ngOnDestroy(): void {
