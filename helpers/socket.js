@@ -7,12 +7,15 @@ socket.config = (server) => {
     socket.io = io;
     io.sockets.on('connection', (socket) => {
         var address = socket.request.connection.remoteAddress;
-        logger.info(`New Socket Connection established: ${address}`)
+        logger.info(`New Connection`, { address, id: socket.id })
         socket.on('leave', (params) => {
             logger.info('leaved', { ...params, address, id: socket.id, method: 'leave' })
             socket.leave(params.room);
         });
 
+        socket.on('ping', () => {
+            socket.emit('pong', { message: 'alive' })
+        });
 
         socket.on('join', (params, cb) => {
             if (!params.room) {
@@ -50,8 +53,7 @@ socket.config = (server) => {
             var user = users.getUser(socket.id);
             if (user) {
                 io.to(`${user.room}`).emit('newMessage', message);
-                logger.info(message, { user, address, id: socket.id, method: 'newMessage' })
-
+                logger.info('newMessage', { user, address, id: socket.id, method: 'newMessage', message })
             }
 
         });
