@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChatService } from '../shared/services/chat.service';
+import { NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +10,8 @@ import { ChatService } from '../shared/services/chat.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  model: any = { step: 'login' };
-  constructor(private router: Router) { }
+  model: any = { step: 'login', username: '' };
+  constructor(private router: Router, private toastrService: NbToastrService) { }
 
   ngOnInit() {
   }
@@ -19,11 +19,22 @@ export class LoginComponent implements OnInit, OnDestroy {
   enterClickHandler = (e) => {
     sessionStorage.setItem('username', e);
     this.model.step = 'options';
+    this.model.username = e;
   }
 
   optionClickHandler = (e) => {
     sessionStorage.setItem('option', e);
-    this.router.navigate(['chat'], { skipLocationChange: true });
+    if (e === 'public') {
+      this.router.navigate(['chat'], { skipLocationChange: true, });
+    } else {
+      this.toastrService.danger(
+        `Authentication required`,
+        `Alert`,
+        {
+          icon: 'alert-triangle-outline'
+        });
+    }
+
   }
 
   ngOnDestroy(): void {

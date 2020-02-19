@@ -12,7 +12,9 @@ import { NbThemeModule } from '@nebular/theme';
 import { NbModule } from './shared/nb.module';
 import { environment } from 'src/environments/environment';
 
-const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
+const config: SocketIoConfig = {
+  url: `${environment.socketUrl}`, options: {}
+};
 
 @NgModule({
   declarations: [

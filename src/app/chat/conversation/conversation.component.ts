@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ChatService } from 'src/app/shared/services/chat.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-conversation',
@@ -9,10 +10,14 @@ import { ChatService } from 'src/app/shared/services/chat.service';
 export class ConversationComponent implements OnInit, OnDestroy {
   messages: any[] = [];
   username: string;
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService, private router: Router) { }
 
   ngOnInit() {
     this.username = sessionStorage.getItem('username');
+    if (!this.username) {
+      sessionStorage.clear();
+      this.router.navigate(['/']);
+    }
     this.chatService.joinGroup({ username: this.username });
     this.chatService.onlineStatus().subscribe(user => {
       this.messages.push(
