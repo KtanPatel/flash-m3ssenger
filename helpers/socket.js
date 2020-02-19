@@ -13,10 +13,6 @@ socket.config = (server) => {
             socket.leave(params.room);
         });
 
-        socket.on('ping', () => {
-            socket.emit('pong', { message: 'alive' })
-        });
-
         socket.on('join', (params, cb) => {
             if (!params.room) {
                 params.room = 'public';
@@ -33,11 +29,10 @@ socket.config = (server) => {
             users.removeUser(socket.id);
             users.addUser(socket.id, params.username, params.room);
             io.to(params.room).emit('updateUserList', users.getUserList(params.room));
-            socket.emit('is_online', 'Welcome to the m3ssenger app');
+            socket.emit('is_online', `Welcome to the m3ssenger app, ${socket.username} !`);
             socket.broadcast.to(params.room).emit('is_online', `🔵 ${params.username} has joined.`);
 
             cb();
-
         });
 
         socket.on('disconnect', () => {
@@ -55,7 +50,6 @@ socket.config = (server) => {
                 io.to(`${user.room}`).emit('newMessage', message);
                 logger.info('newMessage', { user, address, id: socket.id, method: 'newMessage', message })
             }
-
         });
 
     });
