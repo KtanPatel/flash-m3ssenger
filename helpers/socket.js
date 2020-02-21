@@ -48,7 +48,7 @@ socket.config = (server) => {
             var user = users.getUser(socket.id);
             if (user) {
                 io.to(`${user.room}`).emit('newMessage', message);
-                logger.info('newMessage', { user, address, id: socket.id, method: 'newMessage', message })
+                logger.info('newMessage', { user, address, id: socket.id, method: 'newMessage', message: JSON.stringify(message) })
             }
         });
 
